@@ -117,6 +117,7 @@
         
     }
     .section2-div div{
+        padding-left: 20px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         border: 1px #ccc solid;
@@ -126,9 +127,110 @@
         width: 100%;
         height: 100%;
     }
+    .divcop{
+        background-color: inherit;
+        background-blend-mode: hard-light;
+        backdrop-filter: blur(-300px);
+        width: 100%;
+        position: absolute;
+        display: none;
+        place-content: center;
+        place-items: center;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 500;
+    }
+    
+    .div_upp{
+        height: 600px;
+        width: 500px;
+        background-color: orange;
+        border-radius: 20px;
+       
+        
+    }
+    #product_selection{
+        width: 100px;
+        font-size: 15px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-weight: 550;
+    }
+    #quantity_num{
+        width: 100px;
+        font-size: 12px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-weight: 420;
+    }
     </style>
 </head>
 <body>
+    <div class="divcop" id="divcop" style="display: none;">
+        <div class="div_upp">
+            <div style="display:flex; justify-content: flex-end; height: 50px; margin:  0 0 0 0;">
+                <button id="button2" style="background-color: transparent; border: none; font-size: 23px; font-weight: 700; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;padding-right: 50px;">
+                    X
+                </button>
+            </div>    
+            <div  id="div_upp" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                <h2 style="margin-bottom: 0;">
+                    Order Processing Sector <hr/>
+                </h2>
+                
+                <h3>
+                    Please Complete Your Order
+                </h3>
+                <div class="product_details">
+                    <div>
+                        <h3 id="product_name"></h3>
+                        <div>
+                            <h4 id="quantity" style="margin-bottom: 0;">
+                                Quantity
+                            </h4>
+                            <input type="number" id="quantity_num">
+                        </div>
+                    </div>
+                    <div>
+                        <h3 id="size" style="margin-bottom: 0;">Size</h3>
+                        <select id="product_selection" >
+                            <option itemid="label1" label="1Kg" itemref="product_selection">1Kg</option>
+                            <option itemid="label2" label="2Kg" itemref="product_selection">2Kg</option>
+                            <option itemid="label3" label="5Kg" itemref="product_selection">5Kg</option>
+                            <option itemid="label4" label="10Kg" itemref="product_selection">10Kg</option>
+                            <option itemid="label5" label="20Kg" itemref="product_selection">20Kg</option>
+                            <option itemid="label6" label="50Kg" itemref="product_selection">50Kg</option>
+                        </select>
+                    </div>
+                </div>
+           
+            <div style="display: grid; grid-template-columns: 1fr 1fr; row-gap: 20px; column-gap: 20px; width: 300px; margin-top: 40px;">
+
+                <button style="height: 40px; width: 150px; color: #ffffffff;  background-color: #d61111; border: none; outline: none; font-size: 17px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; border-radius: 5px; cursor: pointer;" id="button">
+                    Instant Order
+                </button>
+                <button style="height: 40px; width: 150px; color: black;  background-color: #2600ff; border: none; outline: none; font-size: 17px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; border-radius: 5px; cursor: pointer;" id="button1">
+                    Add To Cart
+                </button>
+            </div>
+            
+        </div>
+        <div>
+            <h3 id="click_name">
+
+            </h3>
+            <h3 id="click_quantity">
+
+            </h3>
+            <h3 id="click_size">
+
+            </h3>
+            <h3 id="price">
+
+            </h3>
+        </div>
+    </div>
+</div>
     <header >
         <div class="left_div" style="display: flex; justify-content: center; align-items: center; align-content: center; justify-items: center;">
             <h4 style="color: orange; font-size: 20px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-feature-settings: 'expt';">
@@ -173,9 +275,9 @@
         <section class="section2" style="display: grid; place-content: center; place-items: center; width: 100%; ">
             <h3>Select Your Choice</h3>
             <div class="section2-div">
-                <button  style="border: none "  id="swipeLeft">	<i class="fa fa-arrow-left" style="font-size:24px"></i></button>
+                <button  style="border: none "  id="swipeLeft">	<i class="fa fa-arrow-left" style="font-size:24px;; margin-right: 20px;"></i></button>
                 <div>
-                    <img id="img1">
+                    <img id="img1" >
                     <img id="img2" >          
                     <img id="img3">
                 </div>
@@ -186,15 +288,61 @@
     </main>
     <script>
         var img_list = ['rice.jpg','beans.webp','potatoes.webp','yam.jpg']
+        var img_alt = ['Rice', 'Beans', 'Potatoes', 'Yam']
         var a = 0;
         var b = 1;
         var c = 2;
+        const product_name = document.getElementById('product_name');
+        const quantity = document.getElementById('quantity');
+        const quantity_num= document.getElementById('quantity_num')
+        const size = document.getElementById('size')
+        const product_selection = document.getElementById('product_selection');
+        const img = document.querySelectorAll('img');
         const img1 = document.getElementById('img1');
         const img2 = document.getElementById('img2')
         const img3 = document.getElementById('img3')
+        const div = document.getElementById('divcop')
+        const div_upp = document.getElementById('div_upp')
+        const button2 = document.getElementById('button2')
+        const button = document.getElementById('button');
+        const button1 = document.getElementById('button1');
+        const click_name = document.getElementById('click_name');
+        const click_quantity =  document.getElementById('click_quantity');
+        const price = document.getElementById('price')
+        var poll ='';
+        const click_size = document.getElementById('click_size')
+        button2.addEventListener('click', function(){
+            div.style.display = 'none'
+        })
+        img.forEach(each =>{
+            each.addEventListener('click', function(){
+                div.style.display = 'grid'
+            document.body.style.position = 'relative';
+            product_selection.addEventListener('change', function(){
+                 poll = product_selection.value;   
+            })    
+            window.location.href = '#div_upp';
+            product_name.innerText = `Product Name: ${each.alt}`;
+            })
+            button1.addEventListener('click', function(){
+                click_name.innerText = `Product Name: ${each.alt}`;
+                click_quantity.innerText = `Quantity Ordered: ${quantity_num.value}`;
+                if(poll !== ''){
+                    click_size.innerText = `Weight:  ${poll}`;
+                }
+                if(poll === ''){
+                    click_size.innerText = `Weight: 1KG`
+                }
+
+            })
+        })
+        
         img1.src = img_list[a]
-            img2.src = img_list[b]
-            img3.src = img_list[c]
+        img2.src = img_list[b]
+        img3.src = img_list[c]
+        img1.alt = img_alt[a]
+        img2.alt = img_alt[b]
+        img3.alt = img_alt[c]
         document.getElementById('swipeRight').addEventListener('click', function(){
             a+=1
             b+=1
@@ -202,6 +350,9 @@
             img1.src = img_list[a]
             img2.src = img_list[b]
             img3.src = img_list[c]
+            img1.alt = img_alt[a]
+            img2.alt = img_alt[b]
+            img3.alt = img_alt[c]
             if(c>img_list.length-1){
                 
                 c -=1
@@ -210,6 +361,9 @@
                 img3.src = img_list[c]
                 img2.src = img_list[b]
                 img1.src = img_list[a]
+                img1.alt = img_alt[a]
+                img2.alt = img_alt[b]
+                img3.alt = img_alt[c]
             }
 
         })
@@ -220,6 +374,9 @@
             img1.src = img_list[a]
             img2.src = img_list[b]
             img3.src = img_list[c]
+            img1.alt = img_alt[a]
+            img2.alt = img_alt[b]
+            img3.alt = img_alt[c]
             if(a<0){
                 
                 c +=1
@@ -228,6 +385,9 @@
                 img3.src = img_list[c]
                 img2.src = img_list[b]
                 img1.src = img_list[a]
+                img1.alt = img_alt[a]
+                img2.alt = img_alt[b]
+                img3.alt = img_alt[c]
             }
 
         })
