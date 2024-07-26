@@ -116,7 +116,7 @@
         width: 100%;
         
     }
-    .section2-div div{
+     .div{
         padding-left: 20px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -162,6 +162,22 @@
         font-size: 12px;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         font-weight: 420;
+    }
+    #continue{
+        width: 100px;
+        height: 30px;
+        background-color: transparent;
+        cursor: pointer;
+        color: brown;
+        border-radius: 15px;
+        border: none;
+        font-size: 16px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-weight: 450;
+    }
+    .continue :hover{
+        background-color:black;
+        font-size: 23px;
     }
     </style>
 </head>
@@ -215,7 +231,7 @@
             </div>
             
         </div>
-        <div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; place-content: center; place-items: center;">
             <h3 id="click_name">
 
             </h3>
@@ -229,6 +245,11 @@
 
             </h3>
         </div>
+        <div style="display: grid; place-content: center; place-items: center;">
+        <button id="continue" class="continue">
+            Continue
+        </button>
+        </div>
     </div>
 </div>
     <header >
@@ -240,7 +261,7 @@
         <div class="middle_div">
             <div>
                 <input type="text" placeholder="Search" >
-                <img src="search.svg" alt="search" style="cursor: pointer;">
+                <img src="search.svg"  style="cursor: pointer;">
             </div>
         </div>
         <div class="right_div">
@@ -276,10 +297,34 @@
             <h3>Select Your Choice</h3>
             <div class="section2-div">
                 <button  style="border: none "  id="swipeLeft">	<i class="fa fa-arrow-left" style="font-size:24px;; margin-right: 20px;"></i></button>
-                <div>
-                    <img id="img1" >
-                    <img id="img2" >          
-                    <img id="img3">
+                <div class="div" id="div2">
+                    <div>
+                    <img id="img1" style="width: 100%;">
+                    <h4 id="img1_name">
+
+                    </h4>
+                    <h4 id="img1_price">
+
+                    </h4>
+                    </div>
+                    <div>
+                    <img id="img2" style="width: 100%;">          
+                    <h4 id="img2_name">
+
+                    </h4>
+                    <h4 id="img2_price">
+
+                    </h4>
+                    </div>
+                    <div>
+                    <img id="img3" style="width: 100%;">
+                    <h4 id="img3_name">
+
+                    </h4>
+                    <h4 id="img3_price">
+
+                    </h4>
+                    </div>
                 </div>
                 <button  style="border: none "  id="swipeRight">	<i class="fa fa-arrow-right" style="font-size:24px"></i></button>
             </div>
@@ -289,19 +334,22 @@
     <script>
         var img_list = ['rice.jpg','beans.webp','potatoes.webp','yam.jpg']
         var img_alt = ['Rice', 'Beans', 'Potatoes', 'Yam']
+        var img_price = ['80000', '100000', '30000', '20000',]
         var a = 0;
         var b = 1;
         var c = 2;
         const product_name = document.getElementById('product_name');
         const quantity = document.getElementById('quantity');
         const quantity_num= document.getElementById('quantity_num')
+        quantity_num.value = 1
         const size = document.getElementById('size')
         const product_selection = document.getElementById('product_selection');
-        const img = document.querySelectorAll('img');
+        const img = document.querySelectorAll('.div img');
         const img1 = document.getElementById('img1');
         const img2 = document.getElementById('img2')
         const img3 = document.getElementById('img3')
         const div = document.getElementById('divcop')
+        const div2 = document.getElementById('div2')
         const div_upp = document.getElementById('div_upp')
         const button2 = document.getElementById('button2')
         const button = document.getElementById('button');
@@ -309,22 +357,38 @@
         const click_name = document.getElementById('click_name');
         const click_quantity =  document.getElementById('click_quantity');
         const price = document.getElementById('price')
+        const img1_price = document.getElementById('img1_price');
+        const img1_name = document.getElementById('img1_name');
+        const img2_price = document.getElementById('img2_price');
+        const img2_name = document.getElementById('img2_name');
+        const img3_price = document.getElementById('img3_price');
+        const img3_name = document.getElementById('img3_name');
+        const continue1 = document.getElementById('continue');
         var poll ='';
+        continue1.style.display = 'none';
         const click_size = document.getElementById('click_size')
         button2.addEventListener('click', function(){
-            div.style.display = 'none'
+            div.style.display = 'none';
+        })
+        continue1.addEventListener('click', function(){
+            div.style.display = 'none';
+            const a = document.createElement('a');
+            a.href = `https://wa.me/2348130591083?text=${encodeURIComponent(`${click_name.innerText} \n ${click_quantity.innerText} \n ${click_size.innerText} \n ${price.innerText} \n I will be expecting your response on this`)}`;
+            a.click()
+            document.body.appendChild(a);
+
         })
         img.forEach(each =>{
             each.addEventListener('click', function(){
                 div.style.display = 'grid'
-            document.body.style.position = 'relative';
-            product_selection.addEventListener('change', function(){
-                 poll = product_selection.value;   
-            })    
+                document.body.style.position = 'relative';
+                product_selection.addEventListener('change', function(){
+                    poll = product_selection.value;   
+                })    
             window.location.href = '#div_upp';
             product_name.innerText = `Product Name: ${each.alt}`;
-            })
             button1.addEventListener('click', function(){
+                continue1.style.display = 'block';
                 click_name.innerText = `Product Name: ${each.alt}`;
                 click_quantity.innerText = `Quantity Ordered: ${quantity_num.value}`;
                 if(poll !== ''){
@@ -333,8 +397,23 @@
                 if(poll === ''){
                     click_size.innerText = `Weight: 1KG`
                 }
+                alert(each.alt)
+                if(each.alt === 'Rice'){
+                    price.innerText = `Total Price: NGN ${quantity_num.value * parseInt(img_price[0])}`
+                }
+                else if(each.alt === 'Beans'){
+                    price.innerText = `Total Price: NGN ${quantity_num.value * parseInt(img_price[1])}`
+                }
+                else if(each.alt === 'Potatoes'){
+                    price.innerText = `Total Price: NGN ${quantity_num.value * parseInt(img_price[2])}`
+                }
+                else if(each.alt === 'Yam'){
+                    price.innerText = `Total Price: NGN ${quantity_num.value * parseInt(img_price[3])}`
+                }
 
             })
+            })
+            
         })
         
         img1.src = img_list[a]
@@ -343,6 +422,13 @@
         img1.alt = img_alt[a]
         img2.alt = img_alt[b]
         img3.alt = img_alt[c]
+        img1_name.innerText = img1.alt;
+        img1_price.innerText = `NGN ${img_price[a]}`;
+        img2_price.innerText = `NGN ${img_price[b]}`;
+        img3_price.innerText = `NGN ${img_price[c]}`;
+        img2_name.innerText = img2.alt;
+        img3_name.innerText = img3.alt;
+
         document.getElementById('swipeRight').addEventListener('click', function(){
             a+=1
             b+=1
@@ -353,6 +439,12 @@
             img1.alt = img_alt[a]
             img2.alt = img_alt[b]
             img3.alt = img_alt[c]
+            img1_name.innerText = img1.alt;
+            img2_name.innerText = img2.alt;
+            img3_name.innerText = img3.alt;
+            img1_price.innerText = `NGN ${img_price[a]}`;
+            img2_price.innerText = `NGN ${img_price[b]}`;
+            img3_price.innerText = `NGN ${img_price[c]}`;
             if(c>img_list.length-1){
                 
                 c -=1
@@ -364,6 +456,12 @@
                 img1.alt = img_alt[a]
                 img2.alt = img_alt[b]
                 img3.alt = img_alt[c]
+                img1_name.innerText = img1.alt;
+                img2_name.innerText = img2.alt;
+                img3_name.innerText = img3.alt;
+                img1_price.innerText = `NGN ${img_price[a]}`;
+                img2_price.innerText = `NGN ${img_price[b]}`;
+                img3_price.innerText = `NGN ${img_price[c]}`;
             }
 
         })
@@ -377,6 +475,12 @@
             img1.alt = img_alt[a]
             img2.alt = img_alt[b]
             img3.alt = img_alt[c]
+            img1_name.innerText = img1.alt;
+            img2_name.innerText = img2.alt;
+            img3_name.innerText = img3.alt;
+            img1_price.innerText = `NGN ${img_price[a]}`;
+            img2_price.innerText = `NGN ${img_price[b]}`;
+            img3_price.innerText = `NGN ${img_price[c]}`;
             if(a<0){
                 
                 c +=1
@@ -388,6 +492,12 @@
                 img1.alt = img_alt[a]
                 img2.alt = img_alt[b]
                 img3.alt = img_alt[c]
+                img1_name.innerText = img1.alt;
+                img2_name.innerText = img2.alt;
+                img3_name.innerText = img3.alt;
+                img1_price.innerText = `NGN ${img_price[a]}`;
+                img2_price.innerText = `NGN ${img_price[b]}`;
+                img3_price.innerText = `NGN ${img_price[c]}`;
             }
 
         })
