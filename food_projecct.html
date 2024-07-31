@@ -192,7 +192,7 @@
     /* Responsive styles */
     @media (max-width: 768px) {
       header {
-        grid-template-columns: 100px 1fr 200px;
+        grid-template-columns: 1fr 2fr 1fr;
       }
 
       .right_div button {
@@ -227,9 +227,11 @@
         font-size: 14px;
       }
       .right_div{
-          display:grid;
-          grid-template-columns:1fr 1fr;
-
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
       }
     }
     </style>
@@ -318,15 +320,17 @@
             </div>
         </div>
         <div class="right_div">
+          <div>
             <button id="sign">
                 <span>
                     Sign Up
                 </span>
             </button>
-                    
+          </div>
+          <div style="display: flex; align-items: flex-end; justify-content: flex-end;">     
                     
                     <i class="fa fa-cart-arrow-down" style="font-size: 32px; color:orange;"></i>
-                
+          </div> 
             
             
         </div>
