@@ -104,11 +104,11 @@
       margin-top: 50px;
     }
 
-    .section1-div2 div {
+    /*.section1-div2 div {
       width: 100%;
       display: flex;
       justify-content: center;
-    }
+    }*/
 
     .section1-div2 div button {
       height: 50px;
@@ -122,7 +122,7 @@
 
     .section2-div {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns:50px 1fr 50px;
       gap: 20px;
       width: 100%;
       padding: 20px;
@@ -159,7 +159,7 @@
 
     .div_upp {
       height: 600px;
-      width: 500px;
+      width: 450px;
       background-color: orange;
       border-radius: 20px;
     }
@@ -201,12 +201,13 @@
         font-size: 16px;
       }
 
-      .section1, .section2-div {
-        grid-template-columns: 1fr;
+       .section2-div {
+        display: grid;  
+        grid-template-columns: 50px  1fr 50px;
       }
 
       .div {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
       }
     }
 
@@ -216,7 +217,21 @@
         grid-template-rows: auto auto auto;
         height: auto;
       }
+      .section2-div {
+        display: grid;  
+        grid-template-columns: 50px  1fr 50px;
+      }
 
+      .div {
+        grid-template-columns: 1fr ;
+      }
+      #div_img2{
+        display: none;
+
+      }
+      #div_img3{
+        display: none;
+      }
       .middle_div div {
         grid-template-columns: 1fr 24px;
       }
@@ -275,7 +290,7 @@
                     </div>
                 </div>
            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; row-gap: 20px; column-gap: 20px; width: 300px; margin-top: 40px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; row-gap: 20px; column-gap:20px;  margin-top: 40px;">
 
                 <button style="height: 40px; width: 150px; color: #ffffffff;  background-color: #d61111; border: none; outline: none; font-size: 17px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; border-radius: 5px; cursor: pointer;" id="button">
                     Instant Order
@@ -286,7 +301,7 @@
             </div>
             
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; place-content: center; place-items: center;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr ; place-content: center; place-items: center; width: 450px;">
             <h3 id="click_name">
 
             </h3>
@@ -361,7 +376,7 @@
             <div class="section2-div">
                 <button  style="border: none "  id="swipeLeft">	<i class="fa fa-arrow-left" style="font-size:24px;; margin-right: 20px;"></i></button>
                 <div class="div" id="div2">
-                    <div>
+                    <div >
                     <img id="img1" style="width: 100%;">
                     <h4 id="img1_name">
 
@@ -370,7 +385,7 @@
 
                     </h4>
                     </div>
-                    <div>
+                    <div id="div_img2">
                     <img id="img2" style="width: 100%;">          
                     <h4 id="img2_name">
 
@@ -379,7 +394,7 @@
 
                     </h4>
                     </div>
-                    <div>
+                    <div id="div_img3">
                     <img id="img3" style="width: 100%;">
                     <h4 id="img3_name">
 
@@ -423,6 +438,7 @@
         const img1_price = document.getElementById('img1_price');
         const img1_name = document.getElementById('img1_name');
         const img2_price = document.getElementById('img2_price');
+        const div_img2 = document.getElementById('div_img2');
         const img2_name = document.getElementById('img2_name');
         const img3_price = document.getElementById('img3_price');
         const img3_name = document.getElementById('img3_name');
@@ -508,7 +524,7 @@
             img1_price.innerText = `NGN ${img_price[a]}`;
             img2_price.innerText = `NGN ${img_price[b]}`;
             img3_price.innerText = `NGN ${img_price[c]}`;
-            if(c>img_list.length-1){
+            /*if(c>img_list.length-1){
                 
                 c -=1
                 b -=1
@@ -525,6 +541,51 @@
                 img1_price.innerText = `NGN ${img_price[a]}`;
                 img2_price.innerText = `NGN ${img_price[b]}`;
                 img3_price.innerText = `NGN ${img_price[c]}`;
+            }*/
+            const h = getComputedStyle(div_img2)
+            
+            if(h.display ==='none'){
+              console.log(a)
+              if(a>img_list.length-1){
+                alert(true)
+                
+                c -=1
+                b -=1
+                a -=1
+                img3.src = img_list[c]
+                img2.src = img_list[b]
+                img1.src = img_list[a]
+                img1.alt = img_alt[a]
+                img2.alt = img_alt[b]
+                img3.alt = img_alt[c]
+                img1_name.innerText = img1.alt;
+                img2_name.innerText = img2.alt;
+                img3_name.innerText = img3.alt;
+                img1_price.innerText = `NGN ${img_price[a]}`;
+                img2_price.innerText = `NGN ${img_price[b]}`;
+                img3_price.innerText = `NGN ${img_price[c]}`;
+            }
+            
+            }
+            else{
+              if(c>img_list.length-1){
+                
+                c -=1
+                b -=1
+                a -=1
+                img3.src = img_list[c]
+                img2.src = img_list[b]
+                img1.src = img_list[a]
+                img1.alt = img_alt[a]
+                img2.alt = img_alt[b]
+                img3.alt = img_alt[c]
+                img1_name.innerText = img1.alt;
+                img2_name.innerText = img2.alt;
+                img3_name.innerText = img3.alt;
+                img1_price.innerText = `NGN ${img_price[a]}`;
+                img2_price.innerText = `NGN ${img_price[b]}`;
+                img3_price.innerText = `NGN ${img_price[c]}`;
+            }
             }
 
         })
@@ -562,7 +623,7 @@
                 img2_price.innerText = `NGN ${img_price[b]}`;
                 img3_price.innerText = `NGN ${img_price[c]}`;
             }
-
+            
         })
 
     </script>
