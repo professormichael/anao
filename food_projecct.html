@@ -4,251 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="food_sections.css">
+    <link rel="stylesheet" href="food_header.css">
+
     <title>Food Dashboard</title>
     <style>
- /* General styles */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    header {
-      display: grid;
-      grid-template-columns: 100px 1fr 200px;
-      height: 50px;
-      width: 100%;
-      align-items: center;
-    }
-
-    .left_div {
-      display: flex;
-    }
-
-    .middle_div {
-      display: grid;
-      place-content: center;
-      place-items: center;
-      width: 100%;
-    }
-
-    .middle_div div {
-      display: grid;
-      grid-template-columns: 1fr 28px;
-      border-bottom: 1px solid #ccc;
-      border-radius: 20px 20px 0 0;
-    }
-
-    .middle_div div input, .middle_div div img {
-      width: 100%;
-      border: none;
-      outline: none;
-      height: 42px;
-      background-color: white;
-    }
-
-    .middle_div div input {
-      font-size: 17px;
-      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    }
-
-    .middle_div div input::placeholder {
-      font-size: 17px;
-      padding-left: 10px;
-      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    }
-
-    .right_div {
-      display: flex;
-      align-items: center;
-    }
-
-    .right_div button {
-      width: 100px;
-      height: 50px;
-      font-size: 19px;
-      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-      font-weight: 450;
-      border: none;
-      border-radius: 25px;
-      background-color: orange;
-      margin-right: 20px;
-    }
-
-    .section1 {
-      margin-top: 20px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      background-color: rgb(231, 231, 121);
-      padding: 20px;
-    }
-
-    .section1 div {
-      width: 100%;
-    }
-
-    .section1 div img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-
-    .section1-div2 h2, .section1-div2 h3 {
-      width: 100%;
-      text-align: center;
-    }
-
-    .section1-div2 h3 {
-      margin-top: 50px;
-    }
-
-    /*.section1-div2 div {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }*/
-
-    .section1-div2 div button {
-      height: 50px;
-      border: none;
-      border-radius: 5px;
-      font-size: 18px;
-      background-color: lightsalmon;
-      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-      cursor: pointer;
-    }
-
-    .section2-div {
-      display: grid;
-      grid-template-columns:50px 1fr 50px;
-      gap: 20px;
-      width: 100%;
-      padding: 20px;
-    }
-
-    .div {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 20px;
-      border: 1px solid #ccc;
-      height: 200px;
-    }
-
-    .section2-div div img {
-      width: 100%;
-      height: 100%;
-    }
-
-    .divcop {
-      background-color: inherit;
-      background-blend-mode: hard-light;
-      backdrop-filter: blur(-300px);
-      width: 100%;
-      position: absolute;
-      display: none;
-      place-content: center;
-      place-items: center;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 500;
-    }
-
-    .div_upp {
-      height: 600px;
-      width: 450px;
-      background-color: orange;
-      border-radius: 20px;
-    }
-
-    #product_selection, #quantity_num {
-      width: 100px;
-      font-size: 15px;
-      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-      font-weight: 550;
-    }
-
-    #continue {
-      width: 100px;
-      height: 30px;
-      background-color: transparent;
-      cursor: pointer;
-      color: brown;
-      border-radius: 15px;
-      border: none;
-      font-size: 16px;
-      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-      font-weight: 450;
-    }
-
-    #continue:hover {
-      background-color: black;
-      font-size: 23px;
-    }
-
-    /* Responsive styles */
-    @media (max-width: 768px) {
-      header {
-        grid-template-columns: 1fr 2fr 1fr;
-      }
-
-      .right_div button {
-        width: 80px;
-        height: 40px;
-        font-size: 16px;
-      }
-
-       .section2-div {
-        display: grid;  
-        grid-template-columns: 50px  1fr 50px;
-      }
-
-      .div {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
-        height: auto;
-      }
-      .section2-div {
-        display: grid;  
-        grid-template-columns: 50px  1fr 50px;
-      }
-
-      .div {
-        grid-template-columns: 1fr ;
-      }
-      #div_img2{
-        display: none;
-
-      }
-      #div_img3{
-        display: none;
-      }
-      .middle_div div {
-        grid-template-columns: 1fr 24px;
-      }
-
-      .right_div button {
-        width: 70px;
-        height: 35px;
-        font-size: 14px;
-      }
-      .right_div{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        margin-top: 20px;
-        padding-right: 20px;
-        padding-left: 20px;
-      }
-    }
     </style>
 </head>
 <body>
@@ -343,8 +103,9 @@
             </button>
           </div>
           <div style="display: flex; align-items: flex-end; justify-content: flex-end;">     
-                    
-                    <i class="fa fa-cart-arrow-down" style="font-size: 32px; color:orange;"></i>
+            <i class="fa fa-cart-arrow-down" style="font-size: 32px; color:orange;" id="cart">
+              <p id="cart_number"></p>
+            </i>
           </div> 
             
             
@@ -410,6 +171,7 @@
         </section>
     </main>
     <script>
+      var cart_list = []
         var img_list = ['rice.jpg','beans.webp','potatoes.webp','yam.jpg']
         var img_alt = ['Rice', 'Beans', 'Potatoes', 'Yam']
         var img_price = ['80000', '100000', '30000', '20000',]
@@ -443,6 +205,7 @@
         const img3_price = document.getElementById('img3_price');
         const img3_name = document.getElementById('img3_name');
         const continue1 = document.getElementById('continue');
+        var counting_num = 0;
         var poll ='';
         continue1.style.display = 'none';
         const click_size = document.getElementById('click_size')
@@ -467,7 +230,17 @@
             window.location.href = '#div_upp';
             product_name.innerText = `Product Name: ${each.alt}`;
             button1.addEventListener('click', function(){
-                continue1.style.display = 'block';
+              counting_num +=1;
+              cart_list.push(
+                [each.alt,
+                `Quantity Ordered: ${quantity_num.value}`, 
+                `Weight:  ${poll || '1kg'}`,
+                price.innerText]
+
+              )
+              cart_number.innerText = cart_list.length
+              console.log(cart_list)
+              continue1.style.display = 'block';
                 click_name.innerText = `Product Name: ${each.alt}`;
                 click_quantity.innerText = `Quantity Ordered: ${quantity_num.value}`;
                 if(poll !== ''){
@@ -491,6 +264,7 @@
                 }
 
             })
+
             })
             
         })
@@ -524,24 +298,6 @@
             img1_price.innerText = `NGN ${img_price[a]}`;
             img2_price.innerText = `NGN ${img_price[b]}`;
             img3_price.innerText = `NGN ${img_price[c]}`;
-            /*if(c>img_list.length-1){
-                
-                c -=1
-                b -=1
-                a -=1
-                img3.src = img_list[c]
-                img2.src = img_list[b]
-                img1.src = img_list[a]
-                img1.alt = img_alt[a]
-                img2.alt = img_alt[b]
-                img3.alt = img_alt[c]
-                img1_name.innerText = img1.alt;
-                img2_name.innerText = img2.alt;
-                img3_name.innerText = img3.alt;
-                img1_price.innerText = `NGN ${img_price[a]}`;
-                img2_price.innerText = `NGN ${img_price[b]}`;
-                img3_price.innerText = `NGN ${img_price[c]}`;
-            }*/
             const h = getComputedStyle(div_img2)
             
             if(h.display ==='none'){
