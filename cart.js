@@ -1,3 +1,4 @@
+document.getElementById('order-success-container').style.display = 'none';
 const cart_system = document.getElementById('cart_system')
 const cart = document.getElementById('cart');
 const cart_number = document.getElementById('cart_number')
@@ -13,6 +14,32 @@ button1.addEventListener('click', function(){
   cart_number.innerText = cart_list.length//cart_list.length
   
 })
+
+document.getElementById('order-success-container').addEventListener('click', function(){
+  if(getComputedStyle(document.getElementById('order-success-container')).display === 'none'){
+    document.getElementById('order-success-container').style.display = 'block';
+  }
+  else{
+    document.getElementById('order-success-container').style.display = 'none';
+  }
+})
+document.getElementById('button1').addEventListener('click', function() {
+  if(getComputedStyle(document.getElementById('order-success-container')).display === 'none'){
+    document.getElementById('order-success-container').style.display = 'block';
+  }
+  else{
+    document.getElementById('order-success-container').style.display = 'block';
+  }
+  var orderSuccessMessage = document.getElementById('orderSuccessMessage');
+  orderSuccessMessage.classList.add('show');
+  window.location.href = '#order-success-container'
+  // Optional: Remove the 'show' class after the animation completes if you want to reset it
+  setTimeout(function() {
+    button2.click()
+    document.getElementById('order-success-container').style.display = 'none';
+    orderSuccessMessage.classList.remove('show');
+  }, 3000); // Extend this timeout to 3s to allow all animations to complete
+});
 
 const butt = document.createElement('button');
 butt.innerText = 'Order Now';
