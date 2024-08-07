@@ -1,5 +1,5 @@
 /* This Css Is About The Components Of The Headers */
-header {
+.header {
     display: grid;
     grid-template-columns: 100px 1fr 200px;
     height: 50px;
@@ -73,7 +73,7 @@ header {
 }
 
 @media (max-width: 768px) {
-    header {
+    .header {
       grid-template-columns: 1fr 2fr 1fr;
     }
 
@@ -94,7 +94,7 @@ header {
   }
 
 @media (max-width: 480px) {
-    header {
+    .header {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto auto;
       height: auto;
@@ -142,6 +142,96 @@ body {
     position: relative;
     
 }
+.main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+  border-bottom: 2px solid #e8491d;
+  padding-bottom: 0.5rem;
+}
+
+.section p, .section ol, .section blockquote {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+ol {
+  margin-left: 1.5rem;
+}
+
+blockquote {
+  border-left: 5px solid #e8491d;
+  padding-left: 1rem;
+  color: #555;
+  font-style: italic;
+}
+
+/* Navigation */
+footer nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer nav ul li {
+  display: inline;
+  margin-right: 1rem;
+}
+
+footer nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+footer nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header h1 {
+      font-size: 2rem;
+  }
+
+  .main {
+      padding: 1rem;
+  }
+
+  .section h2 {
+      font-size: 1.5rem;
+  }
+}
+header{
+  margin-top: 50px;
+}
+header, footer {
+  /*background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient background */
+  color: black;
+  text-align: center;
+  padding: 2rem 0;}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+header p {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
 #cart_number{
     position: absolute;
     bottom: 0;

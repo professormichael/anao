@@ -13,25 +13,31 @@ img.forEach(each =>{
     continue1.style.display = 'block';
     click_name.innerText = `Product Name: ${each.alt}`;
     click_quantity.innerText = `Quantity Ordered: ${quantity_num.value}`;
+    
     if(poll !== ''){
         click_size.innerText = `Weight:  ${poll}`;
+
     }
     if(poll === ''){
         click_size.innerText = `Weight: 1KG`
     }
     if(each.alt === 'Rice'){
+        i = img1_price[0];
         price.innerText = `Total Price: NGN ${quantity_num.value * parseInt(img_price[0])}`
     }
     else if(each.alt === 'Beans'){
+        i = img1_price[1];
         price.innerText = `Total Price: NGN ${quantity_num.value * parseInt(img_price[1])}`
     }
     else if(each.alt === 'Potatoes'){
+        i = img1_price[2];
         price.innerText = `Total Price: NGN ${quantity_num.value * parseInt(img_price[2])}`
     }
     else if(each.alt === 'Yam'){
+        i = img1_price[3];
         price.innerText = `Total Price: NGN ${quantity_num.value * parseInt(img_price[3])}`
     }
-
+    
 })
 
 })

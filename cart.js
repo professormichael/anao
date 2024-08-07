@@ -4,12 +4,12 @@ const cart = document.getElementById('cart');
 const cart_number = document.getElementById('cart_number')
 button1.addEventListener('click', function(){            
   counting_num +=1;
-  
+  alert(`Total Price: NGN ${quantity_num.value * parseInt(iii)}`)
   cart_list.push(
       [product_name.innerText,
       `Quantity Ordered: ${quantity_num.value}`, 
       `Weight:  ${poll || '1kg'}`,
-      price.innerText]
+      `Total Price: NGN ${parseInt( price.innerText.replace('Total Price: NGN ', ''))* parseInt(quantity_num.value)}`]
   )      
   cart_number.innerText = cart_list.length//cart_list.length
   
