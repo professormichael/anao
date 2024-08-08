@@ -1,3 +1,4 @@
+var iii = '';
 var cart_list = []
 var img_list = ['rice.jpg','beans.webp','potatoes.webp','yam.jpg']
 var img_alt = ['Rice', 'Beans', 'Potatoes', 'Yam']
