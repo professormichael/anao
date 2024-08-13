@@ -23,6 +23,17 @@ document.getElementById('order-success-container').addEventListener('click', fun
     document.getElementById('order-success-container').style.display = 'none';
   }
 })
+function clearOrderSYS(){
+  product_name.innerText = '';
+  quantity_num.value = '';
+  product_selection.value = '';
+  click_name.innerText = '';
+  click_quantity.innerText = '';
+  click_size.innerText = '';
+  price.innerText ='';
+
+
+}
 document.getElementById('button1').addEventListener('click', function() {
   if(getComputedStyle(document.getElementById('order-success-container')).display === 'none'){
     document.getElementById('order-success-container').style.display = 'block';
@@ -38,6 +49,7 @@ document.getElementById('button1').addEventListener('click', function() {
     button2.click()
     document.getElementById('order-success-container').style.display = 'none';
     orderSuccessMessage.classList.remove('show');
+    clearOrderSYS()
   }, 3000); // Extend this timeout to 3s to allow all animations to complete
 });
 
